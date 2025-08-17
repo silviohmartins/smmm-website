@@ -1,14 +1,15 @@
 services:
   smmm-website:
     build:
-      # O contexto agora é a raiz do projeto '.'
-      context: .
-      # Especificamos o caminho para o Dockerfile do Nginx
-      dockerfile: ./nginx/Dockerfile
+      context: ./nginx
     container_name: smmm-website
     restart: unless-stopped
     depends_on:
       - admin-backend
+    # Conecta este serviço à rede interna 'default' e à externa 'coolify'
+    networks:
+      - default
+      - coolify
 
   admin-backend:
     build:
@@ -21,3 +22,16 @@ services:
       - N8N_WEBHOOK_BASE_URL=${N8N_WEBHOOK_BASE_URL}
       - N8N_API_KEY=${N8N_API_KEY}
       - PORT=3000
+    # Conecta este serviço à rede interna 'default' e à externa 'coolify'
+    networks:
+      - default
+      - coolify
+
+# Define as redes que nossos serviços usarão
+networks:
+  # A rede 'default' é criada automaticamente para este projeto
+  default:
+    driver: bridge
+  # A rede 'coolify' já existe e é onde o Postgres está
+  coolify:
+    external: true
