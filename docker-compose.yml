@@ -1,17 +1,14 @@
 services:
   smmm-website:
-    image: 'nginx:alpine'
+    build:
+      context: ./nginx
     container_name: smmm-website
     restart: unless-stopped
     volumes:
       - ./static-site:/usr/share/nginx/html:ro
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-    ports:
-      - "80:80"
-      - "443:443"
     depends_on:
       - admin-backend
-  
+
   admin-backend:
     build:
       context: ./admin-backend
