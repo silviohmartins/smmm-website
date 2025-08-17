@@ -4,17 +4,10 @@ services:
       context: ./nginx
     container_name: smmm-website
     restart: unless-stopped
-    volumes:
-      - ./static-site:/usr/share/nginx/html:ro
+    # A SEÇÃO 'volumes' E 'command' FORAM COMPLETAMENTE REMOVIDAS!
+    # O contêiner agora é 100% autônomo.
     depends_on:
       - admin-backend
-    # --- ADICIONE O COMANDO ABAIXO ---
-    command: >
-      sh -c "
-        chmod 755 /usr/share/nginx/html &&
-        chmod 644 /usr/share/nginx/html/* &&
-        nginx -g 'daemon off;'
-      "
 
   admin-backend:
     build:
