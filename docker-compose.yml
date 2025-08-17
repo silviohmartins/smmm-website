@@ -1,7 +1,8 @@
 services:
   smmm-website:
     build:
-      context: ./nginx
+      context: .
+      dockerfile: ./nginx/Dockerfile
     container_name: smmm-website
     restart: unless-stopped
     depends_on:
