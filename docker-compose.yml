@@ -8,6 +8,13 @@ services:
       - ./static-site:/usr/share/nginx/html:ro
     depends_on:
       - admin-backend
+    # --- ADICIONE O COMANDO ABAIXO ---
+    command: >
+      sh -c "
+        chmod 755 /usr/share/nginx/html &&
+        chmod 644 /usr/share/nginx/html/* &&
+        nginx -g 'daemon off;'
+      "
 
   admin-backend:
     build:
