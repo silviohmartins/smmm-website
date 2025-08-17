@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel de Administração</title>
+     <style>
+        body { font-family: sans-serif; padding: 2rem; }
+        .workflow { border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+        button { margin-left: 1rem; cursor: pointer; }
+        #logout-form { position: absolute; top: 1rem; right: 1rem; }
+    </style>
+</head>
+<body>
+    <form id="logout-form" action="/admin/logout" method="POST">
+        <button type="submit">Sair</button>
+    </form>
+
+    <h1>Painel de Controle - Workflows n8n</h1>
+    <p>Aqui você pode ativar ou desativar os workflows.</p>
+
+    <div class="workflow">
+        <h3>Workflow de Exemplo 1 (ID: 123)</h3>
+        <button onclick="toggleWorkflow(123, true)">Ativar</button>
+        <button onclick="toggleWorkflow(123, false)">Desativar</button>
+    </div>
+
+    <div class="workflow">
+        <h3>Workflow de Exemplo 2 (ID: 456)</h3>
+        <button onclick="toggleWorkflow(456, true)">Ativar</button>
+        <button onclick="toggleWorkflow(456, false)">Desativar</button>
+    </div>
+
+    <div id="status"></div>
+
+    <script>
+        async function toggleWorkflow(id, active) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = 'Processando...';
+
+            try {
+                const response = await fetch(`/api/n8n/workflows/${id}/toggle`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ active: active })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    statusDiv.textContent = `Sucesso: ${result.message}`;
+                } else {
+                    throw new Error(result.message || 'Ocorreu um erro.');
+                }
+            } catch (error) {
+                statusDiv.textContent = `Erro: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>

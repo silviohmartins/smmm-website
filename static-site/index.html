@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMMM Soluções - Inovação e Tecnologia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="icon" href="https://www.w3schools.com/favicon.ico">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #4f46e5, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-bg {
+            background-image: url('https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+
+    <header class="bg-black bg-opacity-50 backdrop-blur-sm fixed w-full z-10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-white">SMMM Soluções</h1>
+            <nav>
+                <a href="#services" class="text-gray-300 hover:text-white px-3">Serviços</a>
+                <a href="#contact" class="text-gray-300 hover:text-white px-3">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-bg h-screen flex items-center justify-center text-center relative">
+        <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+        <div class="relative z-10 px-6">
+            <h2 class="text-5xl md:text-7xl font-bold text-white leading-tight">
+                Construindo o Futuro com <span class="gradient-text">Automação de Atendimento e Consultoria de TI</span>
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-300 mt-4 max-w-3xl mx-auto">
+                Especialistas em WhatsApp e Telegram: implantamos secretárias virtuais com IA e oferecemos consultoria para otimizar seus recursos tecnológicos.
+            </p>
+            <a href="#contact" class="mt-8 inline-block bg-indigo-600 text-white font-bold rounded-lg px-8 py-3 hover:bg-indigo-700 transition-colors">
+                Fale com um Especialista
+            </a>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h3 class="text-4xl font-bold text-center mb-12">Nossas Soluções</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                 <div class="bg-gray-800 p-8 rounded-lg text-center transition-transform hover:scale-105">
+                    <h4 class="text-2xl font-bold mb-4">Automação de atendimento</h4>
+                    <p>Automatizamos seu atendimento no WhatsApp e Telegram com uma secretária virtual movida por IA de alto nível. Respostas rápidas, disponibilidade 24/7 e integração com seus sistemas para uma experiência de cliente ágil e consistente.</p>
+                </div>
+                <div class="bg-gray-800 p-8 rounded-lg text-center transition-transform hover:scale-105">
+                    <h4 class="text-2xl font-bold mb-4">Consultoria de TI</h4>
+                    <p>Oferecemos orientação estratégica para otimizar seus recursos tecnológicos e impulsionar o crescimento.</p>
+                </div>				
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-4xl font-bold mb-4">Vamos Inovar Juntos?</h3>
+            <p class="text-lg mb-8">Entre em contato e descubra como a SMMM Soluções pode transformar seu negócio.</p>
+            <a href="mailto:silviohmartins@gmail.com" class="text-2xl font-bold text-indigo-400 hover:text-indigo-500 transition-colors">
+                silviohmartins@gmail.com
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 py-6">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            &copy; 2025 SMMM Soluções. Todos os direitos reservados.
+        </div>
+    </footer>
+
+</body>
+
+<style>
+    #chat-widget-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+    #chat-bubble {
+        width: 60px;
+        height: 60px;
+        background-color: #4f46e5; /* Indigo */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        transition: transform 0.2s;
+    }
+    #chat-bubble:hover {
+        transform: scale(1.1);
+    }
+    #chat-window {
+        display: none;
+        width: 350px;
+        height: 500px;
+        background-color: #111827; /* gray-900 */
+        border-radius: 12px;
+        overflow: hidden;
+        flex-direction: column;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+        position: absolute;
+        bottom: 90px;
+        right: 0;
+    }
+    #chat-header {
+        background-color: #1f2937; /* gray-800 */
+        padding: 1rem;
+        color: white;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #chat-close {
+        cursor: pointer;
+        font-size: 1.2rem;
+    }
+    #chat-messages {
+        flex-grow: 1;
+        padding: 1rem;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .chat-message {
+        padding: 0.75rem 1rem;
+        border-radius: 10px;
+        max-width: 80%;
+        line-height: 1.4;
+    }
+    .user-message {
+        background-color: #4f46e5; /* Indigo */
+        color: white;
+        align-self: flex-end;
+        border-bottom-right-radius: 0;
+    }
+    .bot-message {
+        background-color: #374151; /* gray-700 */
+        color: #e5e7eb; /* gray-200 */
+        align-self: flex-start;
+        border-bottom-left-radius: 0;
+    }
+     .typing-indicator {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+    }
+    .typing-indicator span {
+        height: 8px;
+        width: 8px;
+        margin: 0 2px;
+        background-color: #9ca3af;
+        border-radius: 50%;
+        display: inline-block;
+        animation: bounce 1.4s infinite ease-in-out both;
+    }
+    .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+    .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+    @keyframes bounce {
+        0%, 80%, 100% { transform: scale(0); }
+        40% { transform: scale(1.0); }
+    }
+    #chat-input-container {
+        padding: 1rem;
+        border-top: 1px solid #374151; /* gray-700 */
+        display: flex;
+    }
+    #chat-input {
+        flex-grow: 1;
+        background-color: #1f2937; /* gray-800 */
+        border: 1px solid #4b5563; /* gray-600 */
+        color: white;
+        padding: 0.75rem;
+        border-radius: 8px;
+        outline: none;
+    }
+    #chat-send {
+        margin-left: 0.5rem;
+        background-color: #4f46e5; /* Indigo */
+        color: white;
+        border: none;
+        padding: 0 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+</style>
+
+<div id="chat-widget-container">
+    <div id="chat-window">
+        <div id="chat-header">
+            <span>SMMM Soluções</span>
+            <span id="chat-close">&times;</span>
+        </div>
+        <div id="chat-messages">
+            </div>
+        <div id="chat-input-container">
+            <input type="text" id="chat-input" placeholder="Digite sua mensagem...">
+            <button id="chat-send">Enviar</button>
+        </div>
+    </div>
+    <div id="chat-bubble">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.837 8.837 0 01-4.445-1.272l-3.338 1.113a1 1 0 01-1.265-1.265l1.113-3.338A8.837 8.837 0 012 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM4.707 11.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414-1.414l-2-2zm4.586-4.586a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414-1.414l-2-2z" clip-rule="evenodd" />
+        </svg>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const chatBubble = document.getElementById('chat-bubble');
+    const chatWindow = document.getElementById('chat-window');
+    const chatClose = document.getElementById('chat-close');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatMessages = document.getElementById('chat-messages');
+
+    // !!! IMPORTANTE: SUBSTITUA PELA URL DO SEU WEBHOOK DO N8N !!!
+    const N8N_WEBHOOK_URL = 'https://n8n.smmm.com.br/webhook/1d4a3791-f3d4-47f0-a952-1dc782f57b27';
+
+    chatBubble.addEventListener('click', () => {
+        chatWindow.style.display = 'flex';
+        chatBubble.style.display = 'none';
+        if (chatMessages.children.length === 0) {
+            addBotMessage("Olá! Sou o assistente virtual da SMMM Soluções. Como posso ajudar você a conhecer nossas soluções em software, nuvem e consultoria?");
+        }
+    });
+
+    chatClose.addEventListener('click', () => {
+        chatWindow.style.display = 'none';
+        chatBubble.style.display = 'flex';
+    });
+
+    chatSend.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    function addMessage(text, sender) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('chat-message', sender === 'user' ? 'user-message' : 'bot-message');
+        messageElement.textContent = text;
+        chatMessages.appendChild(messageElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function addBotMessage(text) {
+        addMessage(text, 'bot');
+    }
+
+    function showTypingIndicator() {
+        const typingIndicator = document.createElement('div');
+        typingIndicator.className = 'chat-message bot-message typing-indicator';
+        typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+        chatMessages.appendChild(typingIndicator);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        const indicator = document.querySelector('.typing-indicator');
+        if (indicator) {
+            indicator.remove();
+        }
+    }
+    
+    async function sendMessage() {
+        const messageText = chatInput.value.trim();
+        if (messageText === '') return;
+
+        addMessage(messageText, 'user');
+        chatInput.value = '';
+        showTypingIndicator();
+
+        try {
+            const response = await fetch(N8N_WEBHOOK_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: messageText })
+            });
+
+            if (!response.ok) {
+                throw new Error('A resposta da rede não foi OK.');
+            }
+
+            const data = await response.json();
+            removeTypingIndicator();
+            addBotMessage(data.reply);
+
+        } catch (error) {
+            console.error('Erro ao contatar o webhook:', error);
+            removeTypingIndicator();
+            addBotMessage('Desculpe, estou com um problema de conexão no momento. Por favor, tente novamente mais tarde ou entre em contato pelo e-mail: silviohmartins@gmail.com.');
+        }
+    }
+});
+</script>
+
+</html>

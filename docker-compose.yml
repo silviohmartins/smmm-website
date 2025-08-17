@@ -1,0 +1,25 @@
+services:
+  smmm-website:
+    image: 'nginx:alpine'
+    container_name: smmm-website
+    restart: unless-stopped
+    volumes:
+      - ./static-site:/usr/share/nginx/html:ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - admin-backend
+  
+  admin-backend:
+    build:
+      context: ./admin-backend
+    container_name: admin-backend
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - SESSION_SECRET=${SESSION_SECRET}
+      - N8N_WEBHOOK_BASE_URL=${N8N_WEBHOOK_BASE_URL}
+      - N8N_API_KEY=${N8N_API_KEY}
+      - PORT=3000
