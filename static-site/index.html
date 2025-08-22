@@ -188,6 +188,7 @@
         padding: 1rem;
         border-top: 1px solid #374151; /* gray-700 */
         display: flex;
+        align-items: flex-start;
     }
     #chat-input {
         flex-grow: 1;
@@ -219,7 +220,7 @@
         <div id="chat-messages">
             </div>
         <div id="chat-input-container">
-            <input type="text" id="chat-input" placeholder="Digite sua mensagem...">
+            <textarea id="chat-input" placeholder="Digite sua mensagem..." rows="1" style="resize: none;"></textarea>
             <button id="chat-send">Enviar</button>
         </div>
     </div>
@@ -257,9 +258,18 @@ document.addEventListener('DOMContentLoaded', () => {
     chatSend.addEventListener('click', sendMessage);
     chatInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
+            e.preventDefault();
             sendMessage();
         }
     });
+
+    chatInput.addEventListener('input', () => {
+        const maxHeight = 120; // Define uma altura máxima em pixels (aprox. 6 linhas)
+        chatInput.style.height = 'auto'; // Reseta a altura para calcular o scrollHeight corretamente
+
+        const newHeight = Math.min(chatInput.scrollHeight, maxHeight);
+        chatInput.style.height = newHeight + 'px';
+   });
 
     function addMessage(text, sender) {
         const messageElement = document.createElement('div');
