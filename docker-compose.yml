@@ -11,7 +11,12 @@ services:
     networks:
       - default
       - coolify
-
+    healthcheck:  
+      test: ["CMD", "curl", "-f", "http://localhost/"]  
+      interval: 30s  
+      timeout: 5s  
+      retries: 3
+      
   admin-backend:
     build:
       context: ./admin-backend
@@ -27,7 +32,12 @@ services:
     networks:
       - default
       - coolify
-
+    healthcheck:  
+      test: ["CMD", "curl", "-f", "http://localhost:3000/ || exit 1"]  
+      interval: 30s  
+      timeout: 5s  
+      retries: 3
+      
 # Define as redes que nossos serviços usarão
 networks:
   # A rede 'default' é criada automaticamente para este projeto
